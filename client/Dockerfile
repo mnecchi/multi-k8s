@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package.json .
 RUN yarn
 COPY . .
-CMD ["yarn", "run", "build"]
+RUN yarn run build
 
 FROM nginx
 EXPOSE 3000
