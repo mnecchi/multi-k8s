@@ -18,3 +18,16 @@ after_success:
   - docker push mnecchi/docker-complex-nginx
   - docker push mnecchi/docker-complex-server
   - docker push mnecchi/docker-complex-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-2
+  app: docker-complex
+  env: DockerComplex-env
+  bucket_name: elasticbeanstalk-eu-west-2-159843085935
+  bucket_path: docker-complex
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  
